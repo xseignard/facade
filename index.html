@@ -55,6 +55,9 @@
 					objLoader.setMaterials(materials);
 					objLoader.setPath('obj/');
 					objLoader.load('facade001.obj', function (object) {
+						object.traverse(function (node) {
+							if (node.material) node.material.side = THREE.DoubleSide;
+						});
 						object.rotateX(-90 * THREE.Math.DEG2RAD);
 						object.rotateZ(90 * THREE.Math.DEG2RAD);
 						object.position.y = -20;
